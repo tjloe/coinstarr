@@ -1,7 +1,7 @@
 # coinstarr
 Keeping track of quarters
 
-Coinstarr is a convenient tool for analyzing and reporting personell data over several fiscal quarters. Designed for analysts in the District of Columbia government, this R package can aggregate agency-level data and summarize deparment vacancies, staff overtime, and hours spent on leave. Future development of coinstarr may also lead to more generic applications. 
+Coinstarr is a convenient tool for analyzing and reporting personell data over several fiscal quarters. Designed for budget analysts in the District of Columbia government, this R package can aggregate agency-level data and summarize deparment vacancies, staff overtime, and hours spent on leave. Future development of coinstarr may also lead to more generic applications. 
 
 ## Installation
 ```
@@ -15,6 +15,8 @@ Coinstarr makes the best use of base R and existing packages to concisely analyz
 Three specific types of datasets can be procesessed using coinstarr.
 1. The **vacancy** data lists each employment position in the DC government and indicates whether or not that position is filled at several points throughout the year.
 ``` 
+head(jobs, 3)
+
 ##  row payday position agency      description status is.vacant is.valid
 ##  1   1 2015-08-08   395008      d  Project Manager      A    VACANT    VALID
 ##  2   2 2018-09-01   825351      c  Project Manager      F    FILLED  INVALID
@@ -22,6 +24,8 @@ Three specific types of datasets can be procesessed using coinstarr.
 ```
 2. The **overtime** data lists entires for employee overtime along with the earnings that employee acquired.
 ```
+head(overtime, 3)
+
 ##  row company paygroup     payday paynum agency              name type hours earnings
 ##  1   1       e        f 2014-02-08 896048      a Waters, Nathaniel    a    65        0
 ##  2   2       b        g 2016-04-02 194383      c      Neal, Hannah    h    57      185
@@ -30,7 +34,8 @@ Three specific types of datasets can be procesessed using coinstarr.
 
 3. The **leave** data lists entires for employees who took leave along with any earnings that employee accrued while on leave.
 ```
-head(jobs, 3)
+head(leave, 3)
+
 ##  row company paygroup     payday paynum agency                   name type hours earnings
 ## 1   1       c        i 2012-07-28  31999      c Akimoto-Miller, Jeanne    i     8      965
 ## 2   2       c        h 2017-09-02 348603      e            Nava, Tyler    c   236     1065
