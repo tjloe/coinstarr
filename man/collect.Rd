@@ -4,14 +4,14 @@
 \alias{collect}
 \title{collect}
 \usage{
-collect(df, group1, group2, method = "position")
+collect(df, group, by = "payday", method)
 }
 \arguments{
 \item{df}{a data frame}
 
-\item{group1}{a grouping variable}
+\item{group}{a grouping variable}
 
-\item{group2}{a second grouping variable different from group1}
+\item{by}{a second grouping variable different from group1}
 
 \item{method}{a method}
 }
