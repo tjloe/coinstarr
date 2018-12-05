@@ -56,5 +56,8 @@ Three core functions are used to gather and summarize vacancy, overtime, and lea
 - `model_rpt()` produces a linear model of class `rpt` that will produce a LaTeX output when printed.
 - `plot_agency()` is a useful graphing function that uses ggplot2 to produce all relevant plots for a given agency.
 
+### Helper Functions (Internal)
+- `rd()` generates a random draw of `jobs`, `overtime`, or `leave` data
+
 ## Note from the Author
 This package was prepared for Intro to Programming for Applied Political Data Science, GOVT-696-001, taught by Ryan T. Moore in the School of Public Affairs at American University.
