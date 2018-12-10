@@ -20,7 +20,7 @@ add_fy <- function(df, x, start = 10){
 
   df2 <- df
 
-  df2[["fy"]] <- lubridate::year(df[[x]]) + (month(df[[x]]) >= start)
+  df2[["fy"]] <- lubridate::year(df[[x]]) + (lubridate::month(df[[x]]) >= start)
 
   return(df2)
 

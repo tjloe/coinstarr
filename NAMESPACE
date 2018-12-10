@@ -3,5 +3,5 @@
 export(add_fq)
 export(add_fy)
 export(collect)
-export(merge)
+export(join_by)
 export(model)
