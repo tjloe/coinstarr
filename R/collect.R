@@ -4,8 +4,6 @@
 #'
 #' collect will accept any of the three data sets that come loaded with coinstarr.
 #'
-#' @import magrittr
-#'
 #' @author Tyler J. Loewenstein
 #'
 #' @param df a data frame
