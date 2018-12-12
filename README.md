@@ -56,20 +56,50 @@ Six core functions are used to gather and summarize vacancy, overtime, and leave
 - `collect()` groups observations and generates a tibble with a summary of either *positions* or *hours*, based on the data set.
 - `add_fq()`, `add_fy`, and `add_fiscal()` add fiscal quarters or years to a data frame based on an existing date-time variable.
 - `join_by()` creates a single data set from two or more data frames (in particular: `jobs`, `overtime`, and `leave`) and joins them by either date or fiscal year.
-- `model()` runs a linear model with user-friendly arguments to specify the variable of interest and which agency to analyze.
-
-### Supplemental Tools (In Development)
-- `model_rpt()` produces a linear model of class `rpt` that will produce a LaTeX output when printed.
-- `plot_agency()` is a useful graphing function that uses ggplot2 to produce all relevant plots for a given agency.
+- `model()` runs a linear regression model with an integrated filter to subset the data
 
 ### Helper Functions (Internal)
 - `rd()` generates a random draw of `jobs`, `overtime`, or `leave` data
 
 ## Getting Started
-Let's walk through a typical analysis example and determine what effect vacancies are having on hours of overtime for agency C based on fiscal quarters.
+Let's walk through a typical example of analysis with coinstarr and determine what effect vacancies are having on hours of overtime for agency D based on fiscal quarters.
 ```
 library(coinstarr)
+library(magrittr)
+
+# First, we'll collect the data and add fiscal quarters. Let's use a pipe make things easier.
+jobs_sum_fq <- add_fiscal(jobs, "payday", start = 10) %>% collect("agency", "fiscal", method = "position")
+over_sum_fq <- add_fiscal(overtime, "payday", start = 10) %>% collect("agency", "fiscal", method = "overtime")
+leave_sum_fq <- add_fiscal(leave, "payday", start = 10) %>% collect("agency", "fiscal", method = "leave")
+
+# Next, we'll merge our three data frames together
+fiscal_data <- join_by(jobs_sum_fq, over_sum_fq, leave_sum_fq, by = c("agency", "fiscal"))
+
+# Here's what it looks like
+head(fiscal_data, 3)
+
+## # A tibble: 3 x 9
+## # Groups:   vacancies [2]
+##  agency fiscal leave.hrs leave.earn vacancies vacancies.prop positions.total overtime.hrs
+##  <fct>  <chr>      <dbl>      <dbl>     <int>          <dbl>           <int>        <dbl>
+## 1 a      FY201~     15463      73295        19          0.275              69        14409
+## 2 a      FY201~      9012      50615        19          0.288              66        10894
+## 3 a      FY201~     11207      72105        27          0.375              72        13200
+## # ... with 1 more variable: overtime.earn <dbl>
+
+# Now we can model our variables of interest
+model(fiscal_data, overtime.hrs ~ vacancies, sift = ("agency == 'd'"))
+
+## Call:
+## lm(formula = formula, data = df2)
+##
+## Coefficients:
+## (Intercept)    vacancies  
+##     9975.5        136.4  
+
 ```
+
+From this example, you can begin to see how the functions in coinstarr work together. Keep reading for an in-depth guide of how to perform this kind of analysis. 
 
 ## Usage
 ```
@@ -220,7 +250,14 @@ head(fiscal_data)
 Now that all of the data is organized correctly, we can use `model()` to observe trends that we couldn't see before.
 
 ```
-model
+model(pay_data, overtime.hrs ~ vacancies, sift = "agency == 'c'")
+
+Call:
+lm(formula = formula, data = df2)
+
+Coefficients:
+(Intercept)    vacancies  
+    1997.73       -26.64  
 ```
 
 ## Note from the Author
