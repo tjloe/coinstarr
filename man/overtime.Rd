@@ -13,6 +13,6 @@ Data is a random sample of fake overtime entries
 }
 \examples{
 data(overtime)
-vacancies <- collect(overtime, "agency", method = "hours")
+vacancies <- collect(overtime, "agency", method = "overtime")
 }
 \keyword{datasets}

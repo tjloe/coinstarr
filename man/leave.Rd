@@ -13,6 +13,6 @@ Data is a random sample of fake leave entries
 }
 \examples{
 data(leave)
-vacancies <- collect(leave, "agency", method = "hours")
+vacancies <- collect(leave, "agency", method = "leave")
 }
 \keyword{datasets}
