@@ -4,14 +4,14 @@
 \alias{model}
 \title{model}
 \usage{
-model(df, formula, filter = NULL)
+model(df, formula, sift = NULL)
 }
 \arguments{
 \item{df}{A data frame}
 
 \item{formula}{An object of class "formula"}
 
-\item{filter}{A logical test to filter observations in the data frame}
+\item{sift}{A logical test to filter observations in the data frame}
 }
 \description{
 Generates a linear model for the variables of interest and given filter.
