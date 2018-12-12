@@ -82,13 +82,24 @@ coinstarr:::rd(n = 100, "overtime")
 coinstarr:::rd(n = 100, "leave")
 ```
 
-### Aggregating with `collect()'
+### Aggregating with `collect()`
 Coinstarr comes with some pretty unhelpful datasets, exactly like the kind you would load in an Excel report for DC government. To aggregate the data into more usable data frame, we can use `collect()`.
 
 ```
-jobs_sum <- collect("jobs", group = "payday", method = "position")
-head(job
+jobs_sum <- collect("jobs", by = "agency", method = "position")
+
+head(jobs_sum)
+
+## # A tibble: 6 x 5
+##  agency payday     vacancies vacancies.prop positions.total
+##  <fct>  <date>         <int>          <dbl>           <int>
+## 1 a      2011-10-08         2          0.2                10
+## 2 a      2011-10-22         5          0.417              12
+## 3 a      2011-11-05         2          0.333               6
+## 4 a      2011-11-19         4          0.235              17
+## 5 a      2011-12-03         2          0.182              11
+## 6 a      2011-12-17         2          0.286               7
 ```
 
 ## Note from the Author
-This package was prepared for Intro to Programming for Applied Political Data Science, GOVT-696-001, taught by Ryan T. Moore in the School of Public Affairs at American University.
+This package was prepared for Intro to Programming for Applied Political Data Science, GOVT-696-002, taught by Ryan T. Moore in the School of Public Affairs at American University.
