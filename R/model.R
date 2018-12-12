@@ -12,23 +12,19 @@
 #'
 #' @export
 
-model <- function(df, formula, sift = NULL){
-
-  if(!class(formula) == "formula"){
+model <- function(df, formula, sift = NULL) {
+  if (!class(formula) == "formula") {
     stop("formula argument is not valid.")
   }
 
-  if(is.null(sift)){
+  if (is.null(sift)) {
     out <- lm(formula, data = df)
   } else {
-
     df2 <- subset(df, eval(parse(text = sift)))
     out <- lm(formula, data = df2)
 
   }
-
-return(out)
-
+  return(out)
 }
 
 
