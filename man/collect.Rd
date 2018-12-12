@@ -11,15 +11,21 @@ collect(df, group, by = "payday", method)
 
 \item{group}{a grouping variable}
 
-\item{by}{a second grouping variable different from group1}
+\item{by}{a second grouping variable different from \code{group}}
 
-\item{method}{a method}
+\item{method}{a method specifying what type of data is being used. Can be either "position" or "hours".}
 }
 \description{
 Summarizes raw agency data into vacancies, overtime hours, and leave hours
 }
 \details{
-This is where the details will go.
+collect will accept any of the three data sets that come loaded with coinstarr.
+}
+\examples{
+collect(jobs, "agency", method = "position")
+collect(overtime, "paygroup", method = "hours")
+collect(leave, "type", method = "hours")
+
 }
 \author{
 Tyler J. Loewenstein

@@ -2,21 +2,29 @@
 #'
 #' Summarizes raw agency data into vacancies, overtime hours, and leave hours
 #'
-#' This is where the details will go.
+#' collect will accept any of the three data sets that come loaded with coinstarr.
+#'
+#' @import magrittr
 #'
 #' @author Tyler J. Loewenstein
 #'
 #' @param df a data frame
 #' @param group a grouping variable
-#' @param by a second grouping variable different from group1
-#' @param method a method
+#' @param by a second grouping variable different from \code{group}
+#' @param method a method specifying what type of data is being used. Can be either "position" or "hours".
+#'
+#'
+#' @examples
+#' collect(jobs, "agency", method = "position")
+#' collect(overtime, "paygroup", method = "hours")
+#' collect(leave, "type", method = "hours")
 #'
 #' @export
 
 collect <- function(df, group, by = "payday", method) {
   `%>%` <- magrittr::`%>%`
 
-  if (!method %in% c("position", "overtime", "leave")) {
+  if (!method %in% c("position", "hours")) {
     stop("unknown method")
   }
 

@@ -10,5 +10,5 @@
 #'
 #' @examples
 #' data(overtime)
-#' vacancies <- collect(overtime, "agency", method = "overtime")
+#' vacancies <- collect(overtime, "agency", method = "hours")
 "overtime"

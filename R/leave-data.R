@@ -10,5 +10,5 @@
 #'
 #' @examples
 #' data(leave)
-#' vacancies <- collect(leave, "agency", method = "leave")
+#' vacancies <- collect(leave, "agency", method = "hours")
 "leave"
