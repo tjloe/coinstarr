@@ -1,8 +1,8 @@
 Package: coinstarr
 Title: Keeping track of quarters
-Version: 0.0.0.9008
+Version: 1.0.0.9000
 Authors@R: person("Tyler", "Loewenstein", email = "tylerjloewenstein@gmail.com", role = c("aut", "cre"))
-Description: coinstarr aggregates time series data and provides useful tools for finding trends across fiscal quarters.
+Description: coinstarr aggregates DC government personell data and provides useful tools for budget analysts
 Depends: R (>= 3.5.0)
 License: GPL-3
 Encoding: UTF-8
