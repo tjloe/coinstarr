@@ -4,22 +4,20 @@
 \alias{model}
 \title{model}
 \usage{
-model(df, formula, agency = NULL)
+model(df, formula, filter = NULL)
 }
 \arguments{
 \item{df}{A data frame}
 
 \item{formula}{An object of class "formula"}
 
-\item{agency}{If `NULL`, all agencies are included in the regression. If set
-to "each", a model for each agency will be produced. Otherwise, argument may
-be set to filter a specific agency.}
+\item{filter}{A logical test to filter observations in the data frame}
 }
 \description{
-Generates a linear model for the variables of interest and given agency
+Generates a linear model for the variables of interest and given filter.
 }
 \details{
-A useful adaption to \code{lm()} with an agency filter.
+A useful adaption to \code{lm()} with an integrated filter
 }
 \author{
 Tyler J. Loewenstein

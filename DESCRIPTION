@@ -1,6 +1,6 @@
 Package: coinstarr
 Title: Keeping track of quarters
-Version: 0.0.0.9007
+Version: 0.0.0.9008
 Authors@R: person("Tyler", "Loewenstein", email = "tylerjloewenstein@gmail.com", role = c("aut", "cre"))
 Description: coinstarr aggregates time series data and provides useful tools for finding trends across fiscal quarters.
 Depends: R (>= 3.5.0)
@@ -10,6 +10,7 @@ LazyData: true
 RoxygenNote: 6.1.0
 Imports: dplyr,
     magrittr,
-    lubridate
+    lubridate,
+    tidyr
 Enhances: randomNames
 Suggests: testthat
