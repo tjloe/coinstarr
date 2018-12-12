@@ -1,17 +1,22 @@
 # coinstarr
 Keeping track of quarters
 
-Coinstarr is a convenient tool for analyzing and reporting personell data over several fiscal quarters. Designed for budget analysts in the District of Columbia government, this R package can aggregate agency-level data and summarize deparment vacancies, staff overtime, and hours spent on leave. Future development of coinstarr may also lead to more generic applications. 
+Public budgeting is a difficult task. It gets even harder without access to the right information. Enter coinstarr: a way for DC budget analysts to process personell data and uncover new trends that will lead to smarter spending. Coinstarr is an R package designed to aggregate, transform, analyze, and model agency-level data spread across multiple fiscal quarters. What would normally require hours of coding has been reduced to a suite of functions designed with city officials in mind. Used collectively, these tools can meaninfully track employment vacancies, overtime, and staff leave in as little as six lines of code. Coinstarr is efficient, easy-to-use, and provides DC government with a reliable analytic tool.
 
 ## Installation
 ```
 # The development version of this package can be installed from GitHub
-devtools::install_github(tjloe/coinstarr)
+devtools::install_github("tjloe/coinstarr")
+
+# You may need to specify a personal access token
+devtools::install_github("tjloe/coinstarr", auth_token = "3544235425gyjhfg435245gv23"
 ```
 
 ## Objective
 Coinstarr makes the best use of base R and existing packages to concisely analyze overtime data. It was designed to reduce the amount of code required to generate a full report for several government agencies across fiscal years.
 
+
+## Data
 Three specific types of datasets can be procesessed using coinstarr.
 1. The **vacancy** data lists each employment position in the DC government and indicates whether or not that position is filled at several points throughout the year.
 ``` 
@@ -42,7 +47,7 @@ head(leave, 3)
 ## 3   3       c        g 2012-10-20 586200      a    al-Waheed, Rasheeda    a     5     1365
 ```
 
-While actual personell data cannot be made public, coinstarr does include three dummy datasets that contain randomly generated information and mimic real life values.
+While actual personell data cannot be made public, coinstarr does include three dummy datasets that contain randomly generated information and mimic real life values. 
 
 ## Features
 
@@ -60,5 +65,41 @@ Five core functions are used to gather and summarize vacancy, overtime, and leav
 ### Helper Functions (Internal)
 - `rd()` generates a random draw of `jobs`, `overtime`, or `leave` data
 
+## Getting Started
+Let's walk through a typical analysis example and determine what effect vacancies are having on hours of overtime for agency C.
+```
+library(coinstarr)
+
+data(jobs)
+data(overtime)
+data(leave)
+
+# Hint: If you want to use your own random draw of dummy data, try:
+library(randomNames)
+
+coinstarr:::rd(n = 100, "jobs")
+coinstarr:::rd(n = 100, "overtime")
+coinstarr:::rd(n = 100, "leave")
+```
+
+### Aggregating with `collect()`
+Coinstarr comes with some pretty unhelpful datasets, exactly like the kind you would load in an Excel report for DC government. To aggregate the data into more usable data frame, we can use `collect()`.
+
+```
+jobs_sum <- collect("jobs", by = "agency", method = "position")
+
+head(jobs_sum)
+
+## # A tibble: 6 x 5
+##  agency payday     vacancies vacancies.prop positions.total
+##  <fct>  <date>         <int>          <dbl>           <int>
+## 1 a      2011-10-08         2          0.2                10
+## 2 a      2011-10-22         5          0.417              12
+## 3 a      2011-11-05         2          0.333               6
+## 4 a      2011-11-19         4          0.235              17
+## 5 a      2011-12-03         2          0.182              11
+## 6 a      2011-12-17         2          0.286               7
+```
+
 ## Note from the Author
-This package was prepared for Intro to Programming for Applied Political Data Science, GOVT-696-001, taught by Ryan T. Moore in the School of Public Affairs at American University.
+This package was prepared for Intro to Programming for Applied Political Data Science, GOVT-696-002, taught by Ryan T. Moore in the School of Public Affairs at American University.
