@@ -1,7 +1,7 @@
 # coinstarr
 Keeping track of quarters
 
-Public budgeting is a difficult task. It gets even harder without access to the right information. Enter coinstarr: a way for DC budget analysts to process personell data and uncover new trends that will lead to smarter spending. Coinstarr is an R package designed to aggregate, transform, analyze, and model agency-level data spread across multiple fiscal quarters. What would normally require hours of coding has been reduced to a suite of functions designed with city officials in mind. Used collectively, these tools can meaninfully track employment vacancies, overtime, and staff leave in as little as six lines of code. Coinstarr is efficient, easy-to-use, and provides DC government with a reliable analytic tool.
+Public budgeting is a difficult task. It gets even harder without access to the right information. Enter `coinstarr`: a way for DC budget analysts to process personnel data and uncover new trends that will lead to smarter spending. Coinstarr is an R package designed to aggregate, transform, analyze, and model agency-level data spread across multiple fiscal quarters. What would normally require hours of coding has been reduced to a suite of functions designed with city officials in mind. Used collectively, these tools can meaningfully track employment vacancies, overtime, and staff leave in just a few lines of R code. Coinstarr is efficient, easy-to-use, and provides DC government with a reliable analytic tool.
 
 ## Installation
 ```
@@ -9,16 +9,16 @@ Public budgeting is a difficult task. It gets even harder without access to the 
 devtools::install_github("tjloe/coinstarr")
 
 # You may need to specify a personal access token
-devtools::install_github("tjloe/coinstarr", auth_token = "3544235425gyjhfg435245gv23"
+devtools::install_github("tjloe/coinstarr", auth_token = "3544235425gyjhfg435245gv23")
 ```
 
 ## Objective
-Coinstarr makes the best use of base R and existing packages to concisely analyze overtime data. It was designed to reduce the amount of code required to generate a full report for several government agencies across fiscal years.
+Coinstarr uses base R and existing packages to concisely analyze overtime data. It was designed to reduce the amount of code required to generate a full report for several government agencies across fiscal years.
 
 
 ## Data
-Three specific types of datasets can be procesessed using coinstarr.
-1. The **vacancy** data lists each employment position in the DC government and indicates whether or not that position is filled at several points throughout the year.
+Three specific types of datasets can be processed using `coinstarr`.
+1. The **vacancy** data lists each employment position in the DC government and indicates whether or not that position is filled at several points throughout the year.  For example, the simulated sample data below are included in the package.
 ``` 
 head(jobs, 3)
 
@@ -47,7 +47,7 @@ head(leave, 3)
 ## 3   3       c        g 2012-10-20 586200      a    al-Waheed, Rasheeda    a     5     1365
 ```
 
-While actual personell data cannot be made public, coinstarr does include three dummy datasets that contain randomly generated information and mimic real life values. 
+While actual personnel data cannot be made public, `coinstarr` does include three simulated sample datasets (shown above) that contain randomly generated information and mimic real life values. 
 
 ## Features
 
@@ -161,7 +161,8 @@ head(leave_sum)
 ## 5 a      2011-12-03      2692      14210
 ## 6 a      2011-12-17      1401      16230
 
-# Hint: We can also group by other variables to learn new information about the data. Here's how many vacancies are being caused based on the position description:
+# Hint: We can also group by other variables to learn new information about the data. 
+# Here's how many vacancies are being caused based on the position description:
 
 vacant_jobs <- collect(jobs, group = "agency", by = "description", method = "position")
 
