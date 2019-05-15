@@ -7,9 +7,6 @@ Public budgeting is a difficult task. It gets even harder without access to the 
 ```
 # The development version of this package can be installed from GitHub
 devtools::install_github("tjloe/coinstarr")
-
-# You may need to specify a personal access token
-devtools::install_github("tjloe/coinstarr", auth_token = "3544235425gyjhfg435245gv23")
 ```
 
 ## Objective
