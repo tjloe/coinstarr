@@ -1,21 +1,35 @@
 # coinstarr
 Keeping track of quarters
 
-Public budgeting is a difficult task. It gets even harder without access to the right information. Enter `coinstarr`: a way for DC budget analysts to process personnel data and uncover new trends that will lead to smarter spending. Coinstarr is an R package designed to aggregate, transform, analyze, and model agency-level data spread across multiple fiscal quarters. What would normally require hours of coding has been reduced to a suite of functions designed with city officials in mind. Used collectively, these tools can meaningfully track employment vacancies, overtime, and staff leave in just a few lines of R code. Coinstarr is efficient, easy-to-use, and provides DC government with a reliable analytic tool.
+Public budgeting is a difficult task. It gets even harder without access to the right information. Enter `coinstarr`: a way for DC budget analysts to process personnel data and uncover new trends that will lead to smarter spending. `coinstarr` is an R package designed to aggregate, transform, analyze, and model agency-level data spread across multiple fiscal quarters. What would normally require hours of coding has been reduced to a suite of functions designed with city officials in mind. Used collectively, these tools can meaningfully track employment vacancies, overtime, and staff leave in just a few lines of R code. `coinstarr` is efficient, easy-to-use, and provides DC government with a reliable analytic tool.
 
 ## Installation
+The current version of this package can be installed from GitHub using the `devtools` package.
 ```
-# The development version of this package can be installed from GitHub
 devtools::install_github("tjloe/coinstarr")
 ```
 
 ## Objective
-Coinstarr uses base R and existing packages to concisely analyze overtime data. It was designed to reduce the amount of code required to generate a full report for several government agencies across fiscal years.
+`coinstarr` uses base R and existing packages to concisely analyze overtime data. It was designed to reduce the amount of code required to generate a full report for several government agencies across fiscal years.
 
 
 ## Data
-Three specific types of datasets can be processed using `coinstarr`.
-1. The **vacancy** data lists each employment position in the DC government and indicates whether or not that position is filled at several points throughout the year.  For example, the simulated sample data below are included in the package.
+### Loading the Data
+While real personnel data cannot be made public, `coinstarr` includes a sample dataset for each type of data used in the analysis. Names have been randomly generated (with help from `randomNames`) and all information in the included datasets is fake.
+
+The sample data can be acccessed directly after loading the package.
+```
+library(coinstarr)
+
+data(jobs)
+data(overtime)
+data(leave)
+```
+
+### Types of Data
+Each of the three datasets provides unique information revelant to the analysis:
+
+1. The **jobs** (or vacancy) data lists each employment position in the DC government and indicates whether or not that position is filled at several points throughout the year.
 ``` 
 head(jobs, 3)
 
@@ -43,8 +57,6 @@ head(leave, 3)
 ## 2   2       c        h 2017-09-02 348603      e            Nava, Tyler    c   236     1065
 ## 3   3       c        g 2012-10-20 586200      a    al-Waheed, Rasheeda    a     5     1365
 ```
-
-While actual personnel data cannot be made public, `coinstarr` does include three simulated sample datasets (shown above) that contain randomly generated information and mimic real life values. 
 
 ## Features
 
@@ -105,8 +117,10 @@ library(coinstarr)
 data(jobs)
 data(overtime)
 data(leave)
+```
 
-# Hint: If you want to use your own random draw of dummy data, try:
+**Hint:** If you want to use your own random draw of dummy data, consider using `rd()`:
+```
 library(randomNames)
 
 coinstarr:::rd(n = 100, "jobs")
@@ -177,7 +191,7 @@ head(vacant_jobs)
 ```
 
 ### Assign fiscal dates with `add_fq()`, `add_fy`, and `add_fiscal()`
-Sometimes we'll want to sort the data by fiscal quarter instead of traditional dates. Coinstarr includes three simple functions that will create a new column in your data frame based on another date class variable. 
+Sometimes we'll want to sort the data by fiscal quarter instead of traditional dates. `coinstarr` includes three simple functions that will create a new column in your data frame based on another date class variable. 
 
 ```
 add_fq(jobs, "payday")
@@ -208,7 +222,7 @@ add_fiscal(jobs, "payday", start = 10) %>% collect("agency", "fiscal", method = 
 ```
 
 ### Merge data frames with `join_by()`
-After collecting the data, we still need to merge the data sets together so that we can work with several variables at once. This could be done in base R using `merge()`, but coinstarr includes its own function capable of joining three data frames together. It comes with the default arguments to join by `payday` and `agency`.
+After collecting the data, we still need to merge the data sets together so that we can work with several variables at once. This could be done in base R using `merge()`, but `coinstarr` includes its own function capable of joining three data frames together. It comes with the default arguments to join by `payday` and `agency`.
 
 ```
 pay_data <- join_by(jobs_sum, over_sum, leave_sum)
