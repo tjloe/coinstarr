@@ -280,6 +280,6 @@ Coefficients:
 Future updates may include integration with other packages like `ggplot2` for graphs and `tinytex` for standardized reporting.
 
 ## Note from the Author
-This package was prepared for Intro to Programming for Applied Political Data Science, GOVT-696-002, taught by Ryan T. Moore in the School of Public Affairs at American University.
+This package was prepared for Intro to Programming for Applied Political Data Science (Spring 2019), GOVT-696-002, taught by [Ryan T. Moore](https://github.com/ryantmoore) in the School of Public Affairs at American University.
 
 Have questions or suggestions on how to improve this package? Connect me with on [LinkedIn](https://www.linkedin.com/in/tylerjloewenstein/)
