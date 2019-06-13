@@ -72,19 +72,21 @@ Six core functions are used to gather and summarize vacancy, overtime, and leave
 
 ## Getting Started
 Let's walk through a typical example of analysis with coinstarr and determine what effect vacancies are having on hours of overtime for agency D based on fiscal quarters.
+
+First, we'll collect the data and add fiscal quarters. Let's use a pipe make things easier.
 ```
 library(coinstarr)
 library(magrittr)
 
-# First, we'll collect the data and add fiscal quarters. Let's use a pipe make things easier.
 jobs_sum_fq <- add_fiscal(jobs, "payday", start = 10) %>% collect("agency", "fiscal", method = "position")
 over_sum_fq <- add_fiscal(overtime, "payday", start = 10) %>% collect("agency", "fiscal", method = "overtime")
 leave_sum_fq <- add_fiscal(leave, "payday", start = 10) %>% collect("agency", "fiscal", method = "leave")
+```
 
-# Next, we'll merge our three data frames together
+Next, we'll merge our three data frames together and take a look at the result.
+```
 fiscal_data <- join_by(jobs_sum_fq, over_sum_fq, leave_sum_fq, by = c("agency", "fiscal"))
 
-# Here's what it looks like
 head(fiscal_data, 3)
 
 ## # A tibble: 3 x 9
@@ -95,8 +97,10 @@ head(fiscal_data, 3)
 ## 2 a      FY201~      9012      50615        19          0.288              66        10894
 ## 3 a      FY201~     11207      72105        27          0.375              72        13200
 ## # ... with 1 more variable: overtime.earn <dbl>
+```
 
-# Now we can model our variables of interest
+Now we can model our variables of interest and observe the linear coefficients.
+```
 model(fiscal_data, overtime.hrs ~ vacancies, sift = ("agency == 'd'"))
 
 ## Call:
