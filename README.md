@@ -115,16 +115,16 @@ model(fiscal_data, overtime.hrs ~ vacancies, sift = ("agency == 'd'"))
 From this example, you can begin to see how the functions in coinstarr work together. Keep reading for an in-depth guide of how to perform this kind of analysis. 
 
 ## Usage
+# Setup
 ```
 library(coinstarr)
 
 data(jobs)
 data(overtime)
 data(leave)
-```
 
-**Hint:** If you want to use your own random draw of dummy data, consider using `rd()`:
-```
+# Hint: If you want to use your own random draw of dummy data, consider using `rd()`
+
 library(randomNames)
 
 coinstarr:::rd(n = 100, "jobs")
