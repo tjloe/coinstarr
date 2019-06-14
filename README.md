@@ -71,7 +71,7 @@ Six core functions are used to gather and summarize vacancy, overtime, and leave
 - `rd()` generates a random draw of `jobs`, `overtime`, or `leave` data
 
 ## Getting Started
-Let's walk through a typical example of analysis with coinstarr and determine what effect vacancies are having on hours of overtime for agency D based on fiscal quarters.
+Let's walk through a typical example of analysis with `coinstarr` and determine what effect vacancies are having on hours of overtime for agency D based on fiscal quarters.
 
 First, we'll collect the data and add fiscal quarters. Let's use a pipe make things easier.
 ```
@@ -112,7 +112,7 @@ model(fiscal_data, overtime.hrs ~ vacancies, sift = ("agency == 'd'"))
 
 ```
 
-From this example, you can begin to see how the functions in coinstarr work together. Keep reading for an in-depth guide of how to perform this kind of analysis. 
+From this example, you can begin to see how the functions in `coinstarr` work together. Keep reading for an in-depth guide of how to perform this kind of analysis. 
 
 ## Usage
 ### Setup
@@ -133,7 +133,7 @@ coinstarr:::rd(n = 100, "leave")
 ```
 
 ### Aggregate data with `collect()`
-Coinstarr comes with some pretty unhelpful datasets, exactly like the kind you would get when starting a new project. To aggregate the data into more usable data frame, we can use `collect()`.
+`coinstarr` comes with some pretty unhelpful datasets, exactly like the kind you would get when starting a new project. To aggregate the data into more usable data frame, we can use `collect()`.
 
 ```
 jobs_sum <- collect("jobs", by = "agency", method = "position")
