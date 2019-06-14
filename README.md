@@ -282,4 +282,6 @@ Future updates may include integration with other packages like `ggplot2` for gr
 ## Note from the Author
 This package was prepared for Intro to Programming for Applied Political Data Science (Spring 2019), GOVT-696-002, taught by [Ryan T. Moore](https://github.com/ryantmoore) in the School of Public Affairs at American University.
 
+`coinstarr` is currently deployed with analysts at [The Lab @ DC](https://thelab.dc.gov/) and the [Office of the City Administrator](https://oca.dc.gov/). The analytical techniques from `coinstarr` have been used on real personnel data to inform senior policymakers about how vacancies, overtime usage, and personal leave are related to public service delivery in the District.
+
 Have questions or suggestions on how to improve this package? Connect me with on [LinkedIn](https://www.linkedin.com/in/tylerjloewenstein/)
