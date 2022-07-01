@@ -1,7 +1,7 @@
 # coinstarr
 Keeping track of quarters
 
-Public budgeting is a difficult task. It gets even harder without access to the right information. Enter `coinstarr`: a way for DC budget analysts to process personnel data and uncover new trends that will lead to smarter spending. `coinstarr` is an R package designed to aggregate, transform, analyze, and model agency-level data spread across multiple fiscal quarters. What would normally require hours of coding has been reduced to a suite of functions designed with city officials in mind. Used collectively, these tools can meaningfully track employment vacancies, overtime, and staff leave in just a few lines of R code. `coinstarr` is efficient, easy-to-use, and provides DC government with a reliable analytic tool.
+Public budgeting is a difficult task. It gets even harder without access to the right information. Enter `coinstarr`: a way for DC budget analysts to process personnel data and uncover new trends that will lead to smarter spending. `coinstarr` is an R package designed to aggregate, transform, analyze, and model data spread across multiple agencies and fiscal quarters. What would normally require hours of coding has been reduced to a suite of functions designed with city officials in mind. Used collectively, these tools can meaningfully track employment vacancies, overtime, and staff leave in just a few lines of R code. `coinstarr` is efficient, easy-to-use, and provides DC government with a reliable analytic tool.
 
 ## Installation
 The current version of this package can be installed from GitHub using the `devtools` package.
@@ -17,7 +17,7 @@ devtools::install_github("tjloe/coinstarr")
 ### Loading the Data
 While real personnel data cannot be made public, `coinstarr` includes a sample dataset for each type of data used in the analysis. Names have been randomly generated (with help from `randomNames`) and all information in the included datasets is fake.
 
-The sample data can be acccessed directly after loading the package.
+The sample data can be accessed directly after loading the package.
 ```
 library(coinstarr)
 
@@ -27,9 +27,9 @@ data(leave)
 ```
 
 ### Types of Data
-Each of the three datasets provides unique information revelant to the analysis:
+Each of the three datasets provides unique information relevant to the analysis:
 
-1. The **jobs** (or vacancy) data lists each employment position in the DC government and indicates whether or not that position is filled at several points throughout the year.
+1. The **jobs** (or vacancy) data lists employment positions in the DC government and indicates whether or not that position is filled at several points throughout the year.
 ``` 
 head(jobs, 3)
 
@@ -38,7 +38,7 @@ head(jobs, 3)
 ##  2   2 2018-09-01   825351      c  Project Manager      F    FILLED  INVALID
 ##  3   3 2014-04-19   858618      c Social Scientist      P    FILLED    VALID
 ```
-2. The **overtime** data lists entires for employee overtime along with the earnings that employee acquired.
+2. The **overtime** data lists entries for employee overtime along with the earnings that employee acquired.
 ```
 head(overtime, 3)
 
@@ -48,7 +48,7 @@ head(overtime, 3)
 ##  3   3       c        h 2014-11-15 843271      d    Gabriel, Haley    d     2      405
 ```
 
-3. The **leave** data lists entires for employees who took leave along with any earnings that employee accrued while on leave.
+3. The **leave** data lists entries for employees who took leave along with any earnings that employee accrued while on leave.
 ```
 head(leave, 3)
 
